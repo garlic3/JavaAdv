@@ -1,0 +1,44 @@
+
+내장 객체
+
+내장 객체란 JSP에 의해서 미리 정의 된 객체
+
+내장 객체의 종류
+
+request : 주로 URL에 포함된 사용자의 입력 값을 추출하는 용도로 사용
+response: 페이지 리다이렉트용으로 많이 사용
+session: 브라우저와의 연결 정보를 유지(기본 30분)
+
+
+request 객체
+host : localhost:8080
+connection : keep-alive
+sec-ch-ua : " Not A;Brand";v="99", "Chromium";v="99", "Google Chrome";v="99"
+sec-ch-ua-mobile : ?0
+sec-ch-ua-platform : "macOS"
+upgrade-insecure-requests : 1
+user-agent : Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.84 Safari/537.36
+accept : text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site : none
+sec-fetch-mode : navigate
+sec-fetch-user : ?1
+sec-fetch-dest : document
+accept-encoding : gzip, deflate, br
+accept-language : ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7
+cookie : JSESSIONID=F95C91417AAEFD694A47A77623726235
+
+
+response 객체
+주로 다른 페이지로 강제 이동하는 리다이렉트 용도로 많이 사용 
+response.sendRedirect("underCheck.jsp");
+
+session 객체
+사용자가 로그인 후 그 로그인 상태를 유지할 필요가 있음
+서버에서 데이터를 유지함 (쿠키는 유저측에서 데이터를 유지함)
+
+ 
+
+
+
+
+
