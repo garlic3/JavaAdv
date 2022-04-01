@@ -14,7 +14,7 @@
 
 	try {
 	Class.forName("com.mysql.jdbc.Driver");
-	out.print("JDBC Driver loading 성공!!<br>");
+	out.print("JDBC Driver loading 성공!! by 20서민성<br>");
 	} catch (ClassNotFoundException err){
 		out.print("JDBC Driver loading 실패..");
 	}

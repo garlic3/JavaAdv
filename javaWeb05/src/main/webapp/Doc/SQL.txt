@@ -1,0 +1,6 @@
+CREATE TABLE `visit` (
+  `name` varchar(20) NOT NULL,
+  `content` varchar(50) DEFAULT NULL,
+  `ts` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
