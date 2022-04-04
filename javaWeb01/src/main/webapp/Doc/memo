@@ -104,5 +104,5 @@ JSP에서의 한글처리
 1.<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     JSP 파일 생성시 자동 생성 
-2.request.setChracterEncoding("utf-8");
+2. <%	request.setCharacterEncoding("utf-8");%>
  
