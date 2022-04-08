@@ -3,9 +3,8 @@
 <%@page import="java.sql.*"%>
 <%@ include file="menu.jsp" %>
 
-<%
-request.setCharacterEncoding("utf-8");
-%>
+<%@ include file="database_connect.inc"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,22 +16,6 @@ request.setCharacterEncoding("utf-8");
 <div class = "container shadow mx-auto mt-5 p-5 w-75" style="background-color:#6fb393;">
 
 	<%
-	// 
-	Connection conn = null; // 연결객체 
-	PreparedStatement pstmt = null; // 구문객체
-	ResultSet rset = null; // 결과객체
-
-	// JDBC 드라이버 로딩
-
-	Class.forName("com.mysql.jdbc.Driver");
-
-	// db 연결
-
-	String url = "jdbc:mysql://localhost:3306/university";
-	String id = "root";
-	String pw = "00000000";
-
-	conn = DriverManager.getConnection(url, id, pw);
 
 	// 디비 검색
 

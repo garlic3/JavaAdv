@@ -1,8 +1,8 @@
 <%@page import="java.sql.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%	request.setCharacterEncoding("utf-8");%>
-	
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,24 +22,10 @@ h1 {
 		rel="stylesheet"
 		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 		crossorigin="anonymous">
-<%@ include file="menu.jsp" %>
+	<%@ include file="menu.jsp"%>
 
+	<%@ include file="database_connect.inc"%>
 	<%
-	request.setCharacterEncoding("UTF-8");
-
-	// JDBC 드라이버 로딩
-	Class.forName("com.mysql.jdbc.Driver");
-	// DB연결
-	String url = "jdbc:mysql://localhost:3306/university";
-	String id = "root";
-	String pw = "00000000";
-
-	Connection conn = null; // 디비 연결 객체
-	PreparedStatement pstmt = null; // 디비에 전달할 SQL 구문객체
-	ResultSet rset = null; // 디비에서 꺼내올 데이터들을 담을 객체
-
-	conn = DriverManager.getConnection(url, id, pw);
-
 	// 테이블 데이터 넣는 SQL
 
 	String sql = "SELECT * FROM student";
@@ -95,32 +81,29 @@ h1 {
 
 
 			</tbody>
-			
+
 		</table>
-	<div class="btn-group">
-		<a href="univ_table_list.jsp" class="btn btn-success" aria-current="page" style="border:black 2px solid;">학생 목록</a> 
-		<a href="univ_table_input_form.jsp" class="btn btn-success" style="border:black 2px solid;">학생 등록</a> 
-		<a href="#"class="btn btn-success" style="border:black 2px solid;">학생 삭제</a>
+		<div class="btn-group">
+			<a href="univ_table_list.jsp" class="btn btn-success"
+				aria-current="page" style="border: black 2px solid;">학생 목록</a> <a
+				href="univ_table_input_form.jsp" class="btn btn-success"
+				style="border: black 2px solid;">학생 등록</a> <a href="#"
+				class="btn btn-success" style="border: black 2px solid;">학생 삭제</a>
+		</div>
 	</div>
-	</div>
 
 
 
 
 
-	<%
-	// DB 연결 종료
-	if (pstmt != null)
-		pstmt.close();
-	if (conn != null)
-		conn.close();
-	%>
+	<%@ include file="database_close.inc"%>
+
 
 	<!-- JavaScript Bundle with Popper -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
-	
+
 </body>
 </html>
