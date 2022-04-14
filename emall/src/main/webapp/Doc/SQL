@@ -1,0 +1,10 @@
+CREATE TABLE `product` (
+  `pid` varchar(50) NOT NULL,
+  `pname` varchar(50) DEFAULT NULL,
+  `pprice` varchar(50) DEFAULT NULL,
+  `pdsec` varchar(200) DEFAULT NULL,
+  `pmanu` varchar(50) DEFAULT NULL,
+  `pcafe` varchar(30) DEFAULT NULL,
+  `pcondi` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

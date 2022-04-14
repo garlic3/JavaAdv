@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
 
+String test = request.getParameter("test");
+
+%>
 </body>
 </html>
