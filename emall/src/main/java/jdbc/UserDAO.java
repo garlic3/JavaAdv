@@ -10,6 +10,8 @@ import javax.naming.NamingException;
 import util.ConnectionPool;
 
 public class UserDAO {
+	
+	
 	public int insert(String uid, String upw, String uname, String ugender, String ubirth, String uemail, String uphone,
 			String uaddr) throws NamingException, SQLException {
 

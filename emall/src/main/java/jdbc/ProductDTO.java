@@ -11,6 +11,31 @@ public class ProductDTO {
 	private String pimage;		//신상품 중고품 재고품 
 
 	
+	
+	public void setPid(String pid) {
+		this.pid = pid;
+	}
+	public void setPname(String pname) {
+		this.pname = pname;
+	}
+	public void setPprice(String pprice) {
+		this.pprice = pprice;
+	}
+	public void setPdsec(String pdsec) {
+		this.pdsec = pdsec;
+	}
+	public void setPmenu(String pmenu) {
+		this.pmenu = pmenu;
+	}
+	public void setPcate(String pcate) {
+		this.pcate = pcate;
+	}
+	public void setPcondi(String pcondi) {
+		this.pcondi = pcondi;
+	}
+	public void setPimage(String pimage) {
+		this.pimage = pimage;
+	}
 	public String getPid() {
 		return pid;
 	}
@@ -35,6 +60,13 @@ public class ProductDTO {
 	public String getPimage() {
 		return pimage;
 	}
+	
+	
+	
+	public ProductDTO() {
+		super();
+	}
+	
 	public ProductDTO(String pid, String pname, String pprice, String pdsec, String pmenu, String pcate,
 			String pcondi, String pimage) {
 		super();

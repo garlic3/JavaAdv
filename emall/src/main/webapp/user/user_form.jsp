@@ -13,7 +13,7 @@
 		rel="stylesheet"
 		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3">
 
-	<form action="user_add.jsp" method="post">
+	<form action="user_add_beans.jsp" method="post">
 		<div class="form-group row">
 			<label class="col-sm-3">아이디</label>
 			<div class="col-sm-3">

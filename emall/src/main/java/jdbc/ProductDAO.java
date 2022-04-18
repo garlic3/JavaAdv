@@ -13,7 +13,13 @@ import util.ConnectionPool;
 public class ProductDAO {
 
 	private ArrayList<ProductDTO> productList = new ArrayList<ProductDTO>();
-
+	private ArrayList<ProductDTO> listOfProducts = new ArrayList<ProductDTO>();
+	
+	public ArrayList<ProductDTO> getAllProducts(){
+		return listOfProducts;
+	}
+	
+	
 	public ArrayList<ProductDTO> getList() throws NamingException, SQLException {
 
 		Connection conn = null;
