@@ -8,7 +8,8 @@ public class ProductDTO {
 	private String pmenu;		//상품 제조사
 	private String pcate;		//상품 분류 
 	private String pcondi;		//신상품 중고품 재고품 
-	
+	private String pimage;		//신상품 중고품 재고품 
+
 	
 	public String getPid() {
 		return pid;
@@ -31,8 +32,11 @@ public class ProductDTO {
 	public String getPcondi() {
 		return pcondi;
 	}
+	public String getPimage() {
+		return pimage;
+	}
 	public ProductDTO(String pid, String pname, String pprice, String pdsec, String pmenu, String pcate,
-			String pcondi) {
+			String pcondi, String pimage) {
 		super();
 		this.pid = pid;
 		this.pname = pname;
@@ -41,6 +45,8 @@ public class ProductDTO {
 		this.pmenu = pmenu;
 		this.pcate = pcate;
 		this.pcondi = pcondi;
+		this.pimage = pimage;
+
 	}
 	
 	

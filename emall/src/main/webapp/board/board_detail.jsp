@@ -37,7 +37,6 @@
 
 	<%
 	String bid = request.getParameter("bid");
-	out.print(bid);
 	BoardDTO board = (new BoardDAO()).getDetail(bid);
 	%>
 	<div class="p-5 mb-4 bg-light rounded-3">

@@ -26,18 +26,20 @@
 	<div class="container">
 		<div class="row" align="center">
 			<%
-			
 			ArrayList<ProductDTO> products = (new ProductDAO()).getList();
-			
-			
+
 			for (ProductDTO product : products) {
 			%>
-			<div class="col-md-3" style="border: 1px solid black; ">
+			<div class="col-md-3">
 				<!-- 4개씩 배치 -->
 				<img src="" style="width: 100%">
-				<h3><%=product.getPname() %></h3>
-				<p><%=product.getPprice()%>원</p>
-				<a href="product_detail.jsp?pid=<%=product.getPid() %>" class="btn btn-secondary" role="button">상세 정보 보기</a>
+				<h3><%=product.getPname()%></h3>
+				<p><%=product.getPprice()%>원
+				</p>
+				<img src="/images/<%=product.getPimage()%>" width=200px height=200px;>
+				
+				<a href="product_detail.jsp?pid=<%=product.getPid()%>"
+					class="btn btn-secondary" role="button" style="margin-top:20px;">상세 정보 보기</a>
 			</div>
 			<%
 			}

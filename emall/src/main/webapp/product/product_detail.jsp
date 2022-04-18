@@ -27,19 +27,22 @@
 	String pid = request.getParameter("pid");
 
 	ProductDTO product = (new ProductDAO()).getDetail(pid);
+	
+	
 	%>
-	<div class="p-5 mb-4 bg-light rounded-3">
-		<div class="container-fluid py-5">
+	
+	<div class="p-5 mb-4 bg-light rounded-3" style="display:flex;">
+		<div class="container-fluid py-3" style="width:600px;">
 			<h1 class="display-5 fw-bold"><%=product.getPname() %></h1>
 			<p class="col-md-8 fs-4"><%=product.getPdsec() %></p>
 			<span class="col-md-8 fs-4"><%=product.getPmenu() %></span>
 			<span class="col-md-8 fs-4">(<%=product.getPcondi() %>)</span>
 			<p class="col-md-8 fs-4"><%=product.getPprice() %>원</p>
-			
 			<button class="btn btn-primary" type="button">장바구니</button>
 			<button class="btn btn-primary" type="button">구매하기</button>
 			<a href = "product_list.jsp" class= "btn btn-warning">목록으로 돌아가기</a>
 		</div>
+			<img src="/images/<%=product.getPimage() %>" width=300px height=300px>
 	</div>
 
 	<%@ include file="/_footer.jsp"%>
