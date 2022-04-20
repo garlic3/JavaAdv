@@ -54,7 +54,7 @@
 				<tr>
 					<th scope="row"><%=b.getBid() %></th>
 					<td><a href="board_detail.jsp?bid=<%=b.getBid() %>"><%=b.getBtitle() %></a></td>
-					<td><%=b.getBname() %></td>
+					<td><%=b.getBid() %></td>
 					<td><%=b.getBts()%></td>
 				</tr>
 			<%

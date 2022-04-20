@@ -31,7 +31,8 @@
 		<%=title%>
 	</div>
 	<div class="container" style="padding-top: 30px;">
-		  <form name="newProduct" class="form-horizontal"  action="boardwritedb.jsp" method="post" enctype="multipart/form-data">
+		<form name="newProduct" class="form-horizontal"
+			action="boardwritedb.jsp" method="post" enctype="multipart/form-data">
 
 			<div class="form-group  row">
 				<label class="col-sm-2">제목</label>
@@ -40,8 +41,16 @@
 						placeholder="Enter the Title">
 				</div>
 			</div>
-			
-			
+
+			<div class="form-group  row">
+				<label class="col-sm-2">작성자=</label>
+				<div class="col-sm-4">
+					<input name="bname" type="text" class="form-control">
+				</div>
+			</div>
+
+
+
 			<textarea id="summernote" name="bcontent"></textarea>
 
 			<div class="form-group  row">
@@ -69,7 +78,7 @@
 	<!-- 제이쿼리 js-->
 	<script type="text/javascript"
 		src="//code.jquery.com/jquery-3.6.0.min.js"></script>
-		
+
 	<!-- summernote js -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>

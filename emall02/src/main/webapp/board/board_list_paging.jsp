@@ -2,6 +2,10 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@ page import = "java.sql.*" %>	
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,45 +47,60 @@
 						</tr>
 					</thead>
 					<tbody>
-
 						<%
-						ArrayList<BoardDTO> boards = (new BoardDAO()).getList();
 
-						for (BoardDTO board : boards) {
+						
+						// 드라이버 로딩 
+						Class.forName("com.mysql.jdbc.Driver");
+
+						// DB 연결 
+						String url = "jdbc:mysql://localhost:3306/emall";
+						String id = "root";
+						String pw = "00000000";
+
+						Connection conn = null;
+						PreparedStatement pstmt = null;
+						ResultSet rset = null;
+						conn  = DriverManager.getConnection(url, id, pw);
+
+						
+						
+						String sql = "SELECT * FROM board";
+						pstmt = conn.prepareStatement(sql);
+						rset = pstmt.executeQuery();
+						
+						
+						while(rset.next())
+						{
+						
+							String bid = rset.getString("bid");
+							String btitle = rset.getString("btitle");
+							String bcon = rset.getString("bcon");
+							String buser = rset.getString("buser");
+							String bimage = rset.getString("bimage");
+							String bdate = rset.getString("bdate");
+							
+						
 						%>
 
 						<tr>
-							<td><%=board.getBid()%></td>
-							<td><%=board.getBtitle()%></td>
-							<td><%=board.getBuser()%></td>
-							<td><%=board.getBdate()%></td>
+							<td><%=bid%></td>
+							<td><%=btitle%></td>
+							<td><%=buser%></td>
+							<td><%=bdate%></td>
 						</tr>
-
 
 						<%
 						}
 						%>
-
-
 					</tbody>
 				</table>
 			</div>
 
 
-
-
-
-
-
-
 		</div>
 		<hr>
 	</div>
-
-
-
-
-
 
 
 

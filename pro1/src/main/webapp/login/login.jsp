@@ -10,19 +10,21 @@
 	<form action="login_db.jsp" method="post">
 
 		<div>
-			아이디 <input type="text">
+			아이디 <input type="text" name="uid">
 		</div>
 		<div>
-			비밀번호 <input type="password">
+			비밀번호 <input type="password" name="upw">
 		</div>
-	
+
 		<div>
 			<input type="submit" value="로그인">
 		</div>
-		
-		<div><a herf="sign_up.jsp"></a></div>
-		<div><a herf="forget.jsp"></a></div>
 
+		<div>
+			<button type="button">회원가입</button>
+			<a href="forget_id.jsp">아이디 찾기</a> 
+			<a href="forget_pw.jsp">비밀번호 찾기</a>
+			</div>
 	</form>
 
 	<script type="text/javascript">
