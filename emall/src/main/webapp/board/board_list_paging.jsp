@@ -146,10 +146,15 @@
 						
 						<tr>
 						<td colspan=4>
-
+						
+						<%
+						}
+						%>
+						
+						
 						<%
 						
-
+						
 						// 페이지 제어
 					
 						// 블럭번호 
@@ -157,6 +162,9 @@
 						// 블럭 시작 페이지 번호
 						block_start_page_no = ((block_nbr -1) * PAGE_PER_BLOCK) + 1;
 						// 블럭 끝 페이지 번호
+						block_end_page_no = (block_start_page_no + PAGE_PER_BLOCK) - 1;
+						
+						
 						
 						if(block_nbr > 1){
 							out.print("&nbsp[<a href='board_list_paging.jsp?page_no=1'>" + "맨처음</a>]&nbsp");
@@ -165,8 +173,8 @@
 						previous_block_start_page_no = block_start_page_no - PAGE_PER_BLOCK;
 						out.print("&nbsp[<a href='board_list_paging.jsp?page_no=" +previous_block_start_page_no
 								+ "'>이전</a>]&nbsp");
-						
 						}
+						
 						
 						for (int pgn = block_start_page_no; pgn <= block_end_page_no; pgn++){
 							if(pgn > nbr_of_page){
@@ -174,16 +182,17 @@
 							}
 							
 							if (pgn == cur_page_no){
-								out.print("&nbsp" + pgn + "&nbsp");
+								out.print("&nbsp[" + pgn + "]&nbsp");
 								
 							}else {
 								out.print("&nbsp[" + "<a href='board_list_paging.jsp?page_no="
-							+ pgn + "'>" + pgn + "</a>");
+							+ pgn + "'>" + pgn + "</a>]");
 								
 							}
 						}
 						
-						}
+						
+						
 						if(block_end_page_no < nbr_of_page){
 							// 다음 블럭 시작 페이지
 							next_block_start_page_no = block_end_page_no + 1;
@@ -194,6 +203,7 @@
 						
 						
 							}
+						
 						%>
 						</td>
 						</tr>

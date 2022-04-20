@@ -39,7 +39,7 @@
 			<span class="col-md-8 fs-4">(<%=product.getPcondi() %>)</span>
 			<p class="col-md-8 fs-4"><%=product.getPprice() %>원</p>
 			<button class="btn btn-primary" type="button">장바구니</button>
-			<button class="btn btn-primary" type="button">구매하기</button>
+			<button class="btn btn-primary" type="button" onclick="location.href='order.jsp'">구매하기</button>
 			<a href = "product_list.jsp" class= "btn btn-warning">목록으로 돌아가기</a>
 		</div>
 			<img src="/images/<%=product.getPimage() %>" width=300px height=300px>
