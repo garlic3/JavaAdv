@@ -1,11 +1,11 @@
-<%@page import="jdbc.UserDAO"%>
+<%@page import="jdbc.UserDAO_k"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	String uid = request.getParameter("uid");
+String uid = request.getParameter("uid");
 	String upw = request.getParameter("upw");
 
-	UserDAO dao = new UserDAO();
+	UserDAO_k dao = new UserDAO_k();
 	
 	int result = dao.login(uid, upw);
 
