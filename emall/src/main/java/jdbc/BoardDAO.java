@@ -12,7 +12,7 @@ import util.ConnectionPool;
 
 public class BoardDAO {
 
-	private ArrayList<BoardDTO> boardlist = new ArrayList<BoardDTO>();
+	private ArrayList<BoardDTO> getAllProducts = new ArrayList<BoardDTO>();
 
 	public ArrayList<BoardDTO> getList() throws NamingException, SQLException {
 

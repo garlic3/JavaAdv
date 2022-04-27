@@ -1,0 +1,10 @@
+
+[form]
+
+action : url
+method : get/post
+enctype : 전송되는 컨텐츠 유형을 설정 (사진전송)
+	pplication/x-www-form-urlencoded : 기본값으로, 모든 문자들은 서버로 보내기 전에 인코딩됨을 명시함.
+	multipart/form-data : 모든 문자를 인코딩하지 않음을 명시함. 이 방식은 <form> 요소가 파일이나 이미지를 서버로 전송할 때 주로 사용함.
+
+[input]

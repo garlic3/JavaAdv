@@ -1,0 +1,24 @@
+CREATE TABLE `product` (
+	`pid` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci',
+	`pname` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+	`pprice` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+	`pdesc` VARCHAR(200) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+	`pmanu` VARCHAR(30) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+	`pcate` VARCHAR(30) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+	`pcondi` VARCHAR(30) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+	PRIMARY KEY (`pid`) USING BTREE
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
+
+CREATE TABLE `board` (
+	`bid` VARCHAR(30) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+	`buser` VARCHAR(30) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+	`btitle` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
+	`bcontents` VARCHAR(500) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+	`bts` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;

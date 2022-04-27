@@ -16,7 +16,7 @@
 request.setCharacterEncoding("utf-8");
 
 String uid = request.getParameter("uid");
-UserDAO dao = new UserDAO();
+UserDAO_k dao = new UserDAO_k();
 int result = dao.idCheck(uid);
 
 if (result == 0) {
@@ -51,7 +51,7 @@ if (result == 0) {
 
 		ses.setDebug(true);
 
-		MimeMessage msg = new MimeMessage(ses); // 메일의 내용을 담을 객체
+		MimeMessage msg = new MimeMessage(ses);
 		msg.setSubject(subject); // 제목
 
 		Address fromAddr = new InternetAddress(from);
@@ -63,6 +63,7 @@ if (result == 0) {
 		msg.setContent(content, "text/html;charset=UTF-8"); // 내용과 인코딩
 
 		Transport.send(msg); // 전송
+		
 	} catch (Exception e) {
 		e.printStackTrace();
 		out.println("<script>alert('Send Mail Failed..');history.back();</script>");

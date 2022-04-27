@@ -1,0 +1,44 @@
+@charset "UTF-8";
+*{
+	margin: 0 auto;
+	padding: 0;
+	box-sizing: border-box;
+}
+div{
+	display:block;
+	
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight: normal;
+    font-size: inherit;
+}
+.container{
+    width:100%;
+    margin:0 auto;
+    width: 1024px;
+    font-size:20px;
+    border: solid 1px green;
+    border-radius: 10px 10px / 10px 10px;
+}
+.myInfo{
+	margin-bottom:20px;
+	padding:10px;
+}
+.myBoard{
+	margin-bottom:20px;
+}
+.name{
+	margin-bottom:10px;
+}
+.secession{
+	text-align:center;
+}
+button{
+	font-size:20px;
+}
+.line{
+	height:1px;
+	background-color:green;
+	width:98%;
+	padding:0;
+}

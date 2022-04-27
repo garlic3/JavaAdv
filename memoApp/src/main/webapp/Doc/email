@@ -1,0 +1,14 @@
+이메일 발송
+
+이메일 작성.jsp
+이메일 처리.jsp
+
+네이버 SMTP 서버
+인터넷
+
+smtp: simple mail transfer protocol
+
+1. 네이버 smtp 설정
+네이버 메일함 왼쪽 하단 [ 환경설정 ]
+2. 작성 form 설정
+3. 라이브러리 설치 

@@ -130,9 +130,9 @@
 							String bid = rset.getString("bid");
 							String btitle = rset.getString("btitle");
 							String bcon = rset.getString("bcon");
-							String buser = rset.getString("buser");
+							String buser = rset.getString("bname");
 							String bimage = rset.getString("bimage");
-							String bdate = rset.getString("bdate");
+							String bdate = rset.getString("bts");
 							
 						
 						%>
