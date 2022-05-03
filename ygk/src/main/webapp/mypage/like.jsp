@@ -1,5 +1,5 @@
-<%@page import="jdbc.LikeDAO"%>
-<%@page import="jdbc.LikeDTO"%>
+<%@page import="jdbc.Like"%>
+<%@page import="jdbc.Like2"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -17,10 +17,10 @@ String uid = cookies[0].getValue(); */
 String uid = "test@test.com";
 %>
 <!-- 좋아요한 목록 -->
-<% 
-	ArrayList<LikeDTO> likes = (new LikeDAO()).getLike(uid);
-	for (LikeDTO like : likes) {
-	%>
+<%
+ArrayList<Like2> likes = (new Like()).getLike(uid);
+	for (Like2 like : likes) {
+%>
 		<!-- 게시물 정보 -->
 		<%=like.getBid() %>
 		<a href="boarddetail.jsp"><%=like.getContent() %></a>

@@ -5,18 +5,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 import javax.naming.NamingException;
+
 import util.ConnectionPool;
 
 public class FeedDAO {
-	public boolean insert(String uid, String ucon, String ufname, String uvname, String la, String lo, String like)
+	// 게시물 등록
+	public boolean insert(String uid, String ucon, String ufname, String uvname, String la, String lo)
 			throws NamingException, SQLException {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-
-		boolean var12;
 		try {
-			String sql = "INSERT INTO board(id,content,images,videos, latitude, longitude, like) VALUES(?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO board(uid,content,images,videos,latitude,longitude) VALUES(?,?,?,?,?,?)";
 			conn = ConnectionPool.get();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, uid);
@@ -25,24 +26,17 @@ public class FeedDAO {
 			pstmt.setString(4, uvname);
 			pstmt.setString(5, la);
 			pstmt.setString(6, lo);
-			pstmt.setString(7, like);
-
-			int count = pstmt.executeUpdate();
-			var12 = count > 0;
+			int count = pstmt.executeUpdate(); 
+			return (count > 0) ? true : false;
 		} finally {
-			if (pstmt != null) {
+			if (pstmt != null)
 				pstmt.close();
-			}
-
-			if (conn != null) {
+			if (conn != null)
 				conn.close();
-			}
-
 		}
-
-		return var12;
 	}
-
+	
+	// 모든 게시물 정보 불러오기
 	public ArrayList<FeedDTO> getList() throws NamingException, SQLException {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -50,32 +44,64 @@ public class FeedDAO {
 
 		try {
 			String sql = "SELECT * FROM board ORDER BY ts DESC";
+
 			conn = ConnectionPool.get();
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			ArrayList<FeedDTO> feeds = new ArrayList();
+
+			ArrayList<FeedDTO> feeds = new ArrayList<FeedDTO>();
 
 			while (rs.next()) {
-				feeds.add(new FeedDTO(rs.getString("id"), rs.getString("content"), rs.getString("ts"),
+				feeds.add(new FeedDTO(rs.getString("bid"), rs.getString("content"), rs.getString("ts"),
 						rs.getString("images"), rs.getString("videos"), rs.getString("latitude"),
-						rs.getString("longitude"),rs.getString("like")));
+						rs.getString("longitude")));
 			}
-
-			ArrayList<FeedDTO> var7 = feeds;
-			return var7;
+			return feeds;
 		} finally {
-			if (rs != null) {
+			if (rs != null)
 				rs.close();
-			}
-
-			if (pstmt != null) {
+			if (pstmt != null)
 				pstmt.close();
-			}
-
-			if (conn != null) {
+			if (conn != null)
 				conn.close();
-			}
+		}
+	}
 
+	// 게시물 상세 정보 불러오기
+	public FeedDTO getBoardDetail(String bid) throws NamingException, SQLException{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "SELECT * FROM board WHERE bid=?";
+			
+			conn = ConnectionPool.get();
+			pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, bid);
+			rs = pstmt.executeQuery();
+			
+			rs.next();
+			bid = rs.getString(1);
+			String uid = rs.getString(2); 		// 작성자 
+			String content = rs.getString(3); 	// 내용
+			String ts = rs.getString(4); 		// 작성 시간
+			String images = rs.getString(5); 	// 이미지 
+			String videos = rs.getString(6);	// 비디오
+			String latitude = null;
+			String longitude = null;
+			
+			FeedDTO boardDetail = new FeedDTO(bid, uid, content, ts, images, videos, latitude, longitude);
+			return boardDetail;
+
+		}finally {
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+	
 		}
 	}
 }

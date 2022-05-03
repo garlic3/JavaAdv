@@ -51,7 +51,7 @@
 		Cookie cookie = new Cookie("uid", kid);
 		response.addCookie(cookie);
 		// 메인페이지로 연결
- 		response.sendRedirect("main.jsp"); 
+ 		response.sendRedirect("./main.jsp"); 
  	
 		
 	}

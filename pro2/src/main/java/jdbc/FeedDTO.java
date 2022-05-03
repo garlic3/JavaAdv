@@ -1,19 +1,23 @@
 package jdbc;
 
 public class FeedDTO {
-	private String id;
+	private String bid;
+	private String uid;
 	private String content;
 	private String ts;
 	private String images;
 	private String videos;
 	private String latitude;
 	private String longitude;
-	private String like;
 
-	public String getId() {
-		return this.id;
+	public String getBid() {
+		return this.bid;
 	}
 
+	public String getUid() {
+		return this.uid;
+	}
+	
 	public String getContent() {
 		return this.content;
 	}
@@ -37,21 +41,29 @@ public class FeedDTO {
 	public String getLongitude() {
 		return this.longitude;
 	}
-	
-	public String getLike() {
-		return this.like;
-	}
-	
 
-	public FeedDTO(String id, String content, String ts, String images, String videos, String latitude,
-			String longitude, String like) {
-		this.id = id;
+	public FeedDTO(String bid, String content, String ts, String images, String videos, String latitude,
+			String longitude) {
+		this.bid = bid;
 		this.content = content;
 		this.ts = ts;
 		this.images = images;
 		this.videos = videos;
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.like = like;
 	}
+	
+	public FeedDTO(String bid, String uid,  String content, String ts, String images, String videos, String latitude,
+			String longitude) {
+		this.bid = bid;
+		this.uid = uid;
+		this.content = content;
+		this.ts = ts;
+		this.images = images;
+		this.videos = videos;
+		this.latitude = latitude;
+		this.longitude = longitude;
+	}
+	
+	
 }

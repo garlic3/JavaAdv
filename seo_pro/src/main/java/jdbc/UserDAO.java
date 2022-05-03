@@ -6,14 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.naming.NamingException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import util.ConnectionPool;
 
 public class UserDAO {
 	
-	// 나의페이지 - DB에서 회원정보를 불러오는 매서드 - 정관, 민성
+	// 회원정보 불러오기
 	public UserDTO getDetail(String uid) throws NamingException, SQLException{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -50,7 +48,7 @@ public class UserDAO {
 	}
 	
 	
-	// db에서 유저정보 삭제할 함수 - 정관
+	// 유저 삭제 
     public int delUser(String uid) throws NamingException, SQLException{
        Connection conn = null;
        PreparedStatement pstmt = null;
@@ -71,7 +69,7 @@ public class UserDAO {
     }
     
     
-	// 회원가입 - 민성
+	// 회원가입
 	public boolean userInsert(String uid, String upw, String uname, String ugender, String ubirth)
 			throws NamingException, SQLException {
 
@@ -107,7 +105,7 @@ public class UserDAO {
 	}
 
 	
-	// 아이디 존재 여부 확인 - 민성
+	// 아이디 존재 여부 확인
 	public int idCheck(String uid) throws NamingException, SQLException {
 
 		Connection conn = null;
@@ -141,7 +139,7 @@ public class UserDAO {
 
 	}
 	
-	// 임시 비밀번호 설정 - 민성
+	// 임시 비밀번호 설정
 	public boolean setTemPw(String uid, String temPw) throws NamingException, SQLException{
 		Connection conn = null;
 		PreparedStatement pstmt = null;

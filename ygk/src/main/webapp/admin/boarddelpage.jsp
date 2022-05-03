@@ -49,13 +49,13 @@ if(uid!="admin"){ // 관리자가 아니라면 로그인하도록 안내
 	<h2>게시물 목록</h2>
 	<!-- 게시물 가져오기 -->
 	<% 
-	ArrayList<BoardDTO> boards = (new BoardDAO()).getList();
+	ArrayList<BoardDTO> boards = (new BoardDAO()).allPost();
 	for (BoardDTO board : boards) {
 	%>
 		<!-- 게시물 정보 -->
 		<%=board.getBid() %>
-		<a href="./board/board_detail.jsp"><%=board.getBtitle() %></a>
-		<%=board.getBts() %><br>
+		<a href="./board/board_detail.jsp"><%=board.getContent() %></a>
+		<%=board.getTs() %><br>
 	<%	
 	}
 	%>

@@ -54,12 +54,12 @@
 				<label class="col-sm-2">성별</label>
 				<div class="col-sm-3">
 					<div class="form-check form-check-inline">
-					  <input name="ugender" class="form-check-input" type="radio" id="inlineCheckbox1" value="남성">
-					  <label class="form-check-label" for="inlineCheckbox1">남성</label>
+					  <input name="ugender" class="form-check-input" type="radio" id="inlineCheckbox1">
+					  <label class="form-check-label" for="inlineCheckbox1"></label>
 					</div>
 					<div class="form-check form-check-inline">
-					  <input name="ugender" class="form-check-input" type="radio" id="inlineCheckbox2" value="여성">
-					  <label class="form-check-label" for="inlineCheckbox2">여성</label>
+					  <input name="ugender" class="form-check-input" type="radio" id="inlineCheckbox2" >
+					  <label class="form-check-label" for="inlineCheckbox2"></label>
 					</div>
 				</div>
 

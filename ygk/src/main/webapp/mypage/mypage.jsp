@@ -78,14 +78,13 @@ ArrayList<BoardDTO> myboards = (new BoardDAO()).getMylist(uid); // 게시물 목
 	<%
 	for (BoardDTO myboard : myboards) {
 	%>
-	<div class="myBoard">
-		<%=myboard.getId() %>	
+	<div class="myBoard">	
 		<%=myboard.getContent() %>	
 		<%=myboard.getImages() %>	
 		<%=myboard.getVideos() %>	
 		<%=myboard.getTs() %>
-		<%=myboard.getLatitude() %>
-		<%=myboard.getLongitude() %>
+		<%=myboard.getLat() %>
+		<%=myboard.getLon() %>
 	</div>			
 	<%
 	}

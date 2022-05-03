@@ -26,8 +26,8 @@
 	<%
 	String id = "23";
 
-	FeedDAO dao = new FeedDAO();
-	FeedDTO board = dao.getBoardDetail(id);
+			BoardDAO dao = new BoardDAO();
+			BoardDTO board = dao.getBoardDetail(id);
 	%>
 
 	<div class="container">

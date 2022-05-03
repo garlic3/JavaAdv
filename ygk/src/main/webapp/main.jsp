@@ -1,129 +1,176 @@
-
+<%@page import="jdbc.*"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="http://localhost:8080/project/main.css"> <!-- 토스트용  -->
-    <meta charset="utf-8">
-    <title>제목 아님</title>
-<style> 
-.centered_map { margin: 0 auto; border: 1px solid black;}  
-
-body {
-width: 1258px;
-height: 1020px;
-
-}
-
-</style> 
-    
+<meta charset="utf-8" />
+<title>Kakao 지도 시작하기</title>
 </head>
+
+<%
+String lat = request.getParameter("lat");
+String lon = request.getParameter("lon");
+
+request.setAttribute("lat", lat);
+request.setAttribute("lon", lon);
+%>
 <body>
-<%@ include file="./header/header.jsp"%>
+	<!-- 맵 기능 및 출력 -->
+	
+	<%@ include file="./header/header.jsp" %>
 
-<div class="centered_map" id="map" style= "width:80%;height:350px;"></div>
+	
+	<div id="map" style="width: 50%; height: 350px;"></div>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=524d840e60a5b519f048cc6e69baa8ad"></script>
-<script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(33.4508, 126.570657), // 지도의 중심좌표(디폴트-카카오센터))
-        level: 3 // 지도의 확대 레벨 
-    }; 
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=524d840e60a5b519f048cc6e69baa8ad"></script>
 
-var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		mapOption = {
+			center : new kakao.maps.LatLng(<%=lat%>, <%=lon%>), // 지도의 중심좌표
+			level : 3
+		// 지도의 확대 레벨
+		};
 
-// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
-if (navigator.geolocation) {
-    
-    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-    navigator.geolocation.getCurrentPosition(function(position) {
-        
-        var lat = position.coords.latitude, // 위도
-            lon = position.coords.longitude; // 경도
-        
-        var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-            message = '<div style="padding:5px;">나 여기있어!</div>'; // 인포윈도우에 표시될 내용입니다
-          
+		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		 
+		// 마커를 표시할 위치와 title 객체 배열입니다 
+		var positions = [];
+	</script>
 
-		location.href='main_db.jsp?ulan='+lat+'&ulon='+lon;
-		
-		
-         // 마커와 인포윈도우를 표시합니다
-            displayMarker(locPosition, message);
-            
-            
-///////////////////////////////////////////////////////////////// 다충 출력
-        var positions = [
-            {
-                title: '카카오', 
-                latlng: new kakao.maps.LatLng(37.500126901, 127.035447801)
-            },
-            {
-                title: '생태연못', 
-                latlng: new kakao.maps.LatLng(37.693199157714844, 127.02958679199219)
-            }
-        ];
+	<form name="blist" action="bAdd.jsp" method="post">
+		<table align=right>
+			<tr>
+				<td><input type="hidden" name="lat" value=<%=lat%>> <input
+					type="hidden" name="lon" value=<%=lon%>></td>
+			</tr>
+			<tr>
+				<td align=rigth><input type="submit" value="게시물 등록" />
+			</tr>
+		</table>
+	</form>
 
-        // 마커 이미지의 이미지 주소입니다
-        var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-            
-        for (var i = 0; i < positions.length; i ++) {
-            
-            // 마커 이미지의 이미지 크기 입니다
-            var imageSize = new kakao.maps.Size(24, 35); 
-            
-            // 마커 이미지를 생성합니다    
-            var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
-            
-            // 마커를 생성합니다
-            var marker = new kakao.maps.Marker({
-                map: map, // 마커를 표시할 지도
-                position: positions[i].latlng, // 마커를 표시할 위치
-                title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                image : markerImage // 마커 이미지 
-            });
-            marker.setMap(map); // 마커한거 지도에 출력
-        }
-         
-//////////////////////////////////////////////////////////////////// 
-        
-            
-      });
-    
-} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-      
-        message = '현재위치를 사용할수 없어요..'
-        alert(message) /* 이거 채크하셔야함  */
-}
 
-// 지도에 마커와 인포윈도우를 표시하는 함수입니다
-function displayMarker(locPosition, message) {
+	<!-- 게시물 목록 출력(마커위치 저장) 및 거리계산 -->
+	<table align=right>
 
-    // 마커를 생성합니다
-    var marker = new kakao.maps.Marker({  
-        map: map, 
-        position: locPosition
-    }); 
-    
-    var iwContent = message, // 인포윈도우에 표시할 내용
-        iwRemoveable = true;
 
-    // 인포윈도우를 생성합니다
-    var infowindow = new kakao.maps.InfoWindow({
-        content : iwContent,
-        removable : iwRemoveable
-    });
-    
-    // 인포윈도우를 마커위에 표시합니다 
-    infowindow.open(map, marker);
-    
-    // 지도 중심좌표를 접속위치로 변경합니다
-    map.setCenter(locPosition);      
-}    
-</script>
-<%@ include file="./footer/footer.jsp"%>
+		<%
+		ArrayList<BoardDTO> feeds = (new BoardDAO()).allPost();
+		for (BoardDTO feed : feeds) {
+			String img = feed.getImages();
+			String imgstr = "";
+			String vid = feed.getVideos();
+
+			double lon1 = Double.valueOf(lon);
+			double lon2 = Double.valueOf(feed.getLon());
+
+			double lat1 = Double.valueOf(lat);
+			double lat2 = Double.valueOf(feed.getLat());
+
+			double theta = lon1 - lon2;
+			double dist = Math.sin(lat1 * Math.PI / 180.0) * Math.sin(lat2 * Math.PI / 180.0)
+			+ Math.cos(lat1 * Math.PI / 180.0) * Math.cos(lat2 * Math.PI / 180.0) * Math.cos(theta * Math.PI / 180.0);
+
+			dist = Math.acos(dist);
+			dist = dist * 180 / Math.PI;
+			dist = dist * 60 * 1.1515;
+			dist = dist * 1609.344;
+
+			if (img != null) {
+				imgstr = "<img src='images/" + img + "' width = 240>";
+			}
+			// 범위내에 게시물만 표시 단위는 미터(m)
+			if (dist < 700) {
+		%>
+
+		<tr>
+			<td colspan=2><hr></td>
+		</tr>
+		<tr>
+			<td><%=feed.getBid()%></td>
+		</tr>
+		<tr>
+			<td><%=feed.getUid()%></td>
+			<td><%=feed.getTs()%></td>
+		</tr>
+		<tr>
+			<td colspan=2><%=imgstr%></td>
+		</tr>
+		<tr>
+			<td colspan=2><%=feed.getContent()%></td>
+		</tr>
+
+		<script>
+			
+				var uid = '<%=feed.getUid()%>
+			';
+			var glat =
+		<%=feed.getLat()%>
+			;
+			var glon =
+		<%=feed.getLon()%>
+			;
+
+			positions.push({
+				content : '<div>' + uid + '</div>',
+				latlng : new kakao.maps.LatLng(glat, glon)
+			});
+		</script>
+		<%
+		}
+		}
+		%>
+		<%@ include file="./footer/footer.jsp" %>
+	</table>
+	<script>
+		// 마커 표시 코드
+
+		// 마커 이미지의 이미지 주소입니다
+		var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+
+		for (var i = 0; i < positions.length; i++) {
+
+			// 마커 이미지의 이미지 크기 입니다
+			var imageSize = new kakao.maps.Size(24, 35);
+
+			// 마커 이미지를 생성합니다    
+			var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+			// 마커를 생성합니다
+			var marker = new kakao.maps.Marker({
+				map : map, // 마커를 표시할 지도
+				position : positions[i].latlng, // 마커를 표시할 위치
+				title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+				image : markerImage
+			// 마커 이미지 
+			});
+
+			// 마커에 표시할 인포윈도우를 생성합니다 
+			var infowindow = new kakao.maps.InfoWindow({
+				content : positions[i].content
+			// 인포윈도우에 표시할 내용
+			});
+
+			// 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
+			// 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+			(function(marker, infowindow) {
+				// 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
+				kakao.maps.event.addListener(marker, 'mouseover', function() {
+					infowindow.open(map, marker);
+				});
+
+				// 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
+				kakao.maps.event.addListener(marker, 'mouseout', function() {
+					infowindow.close();
+				});
+			})(marker, infowindow);
+		}
+	</script>
+
 
 </body>
 </html>

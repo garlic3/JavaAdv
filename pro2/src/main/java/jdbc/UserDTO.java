@@ -2,7 +2,6 @@ package jdbc;
 
 public class UserDTO {
 
-
 	private String uid;
 	private String upw;
 	private String uname;
@@ -10,10 +9,8 @@ public class UserDTO {
 	private String ubirth;
 	private String ulat;
 	private String ulon;
-	private String usingup;
-	private String ukakako;
-	private String ulike;
-	
+	private String usignup;
+	private String likeIt;
 	
 	public String getUid() {
 		return uid;
@@ -57,47 +54,35 @@ public class UserDTO {
 	public void setUlon(String ulon) {
 		this.ulon = ulon;
 	}
-	public String getUsingup() {
-		return usingup;
+	public String getUsignup() {
+		return usignup;
 	}
-	public void setUsingup(String usingup) {
-		this.usingup = usingup;
+	public void setUsignup(String usignup) {
+		this.usignup = usignup;
 	}
-	public String getUkakako() {
-		return ukakako;
+	public String getLikeIt() {
+		return likeIt;
 	}
-	public void setUkakako(String ukakako) {
-		this.ukakako = ukakako;
-	}
-	public String getUlike() {
-		return ulike;
-	}
-	public void setUlike(String ulike) {
-		this.ulike = ulike;
+	public void setLikeIt(String likeIt) {
+		this.likeIt = likeIt;
 	}
 	
-	public UserDTO(String uid, String upw, String uname, String ugender, String ubirth, String ulat, String ulon,
-			String usingup, String ukakako, String ulike) {
-		super();
+	
+	public UserDTO() {
+	}
+	// 마이페이지에서 보여줄 회원정보만 담은 생성자
+	public UserDTO(String uname, String ugender, String ubirth, String likeIt) {
+		this.uname = uname;
+		this.ugender = ugender;
+		this.ubirth = ubirth;
+		this.likeIt = likeIt;
+	}
+	public UserDTO(String uid, String upw, String uname, String ugender, String ubirth, String usignup) {
 		this.uid = uid;
 		this.upw = upw;
 		this.uname = uname;
 		this.ugender = ugender;
 		this.ubirth = ubirth;
-		this.ulat = ulat;
-		this.ulon = ulon;
-		this.usingup = usingup;
-		this.ukakako = ukakako;
-		this.ulike = ulike;
+		this.usignup = usignup;
 	}
-	
-	public UserDTO() {
-		
-	}
-	
-	
-	
-	
-	
-
 }

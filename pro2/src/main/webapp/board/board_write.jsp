@@ -87,19 +87,16 @@
 <table align=center>
 <tr><td colspan=2>톡보기</td></tr>
 
-<% 
-
-ArrayList<FeedDTO> feeds = (new FeedDAO()).getList();
-for (FeedDTO feed : feeds) {
+<%
+ArrayList<BoardDTO> feeds = (new BoardDAO()).getList();
+for (BoardDTO feed : feeds) {
 	String img = feed.getImages();
 	String imgstr = "";
 	String vid = feed.getVideos();
 	
  	if (img != null) {
  		imgstr = "<img src='images/" + img + "' width = 240>";
- 	} 
- 	
- 	
+ 	}
 %>
 	<tr><td colspan=2><hr></td></tr>
 	<tr><td><%=feed.getId() %></td><td><%=feed.getTs() %></td></tr>

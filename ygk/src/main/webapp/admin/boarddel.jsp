@@ -12,7 +12,7 @@
 	BoardDAO boardid = new BoardDAO();
 	
 	// 입력받은 bid가 db상에 존재하는지 확인(1=있음/0=없음)
-	if(boardid.isExist( bid)==0){
+	if(boardid.isExist(bid)==0){
 %>
 <script>
 		alert("해당 게시물은 존재하지 않습니다");
@@ -20,7 +20,7 @@
 </script>
 <%
 	}else{
-		boardid.delBoard(bid); // 게시물 삭제
+		boardid.delPost(bid); // 게시물 삭제
 %>
 <script>
 		alert("게시물이 삭제되었습니다");

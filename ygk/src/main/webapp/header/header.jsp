@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <style>
 @font-face {
     font-family: 'Yeongdo-Rg';
@@ -28,23 +29,26 @@ a {
 font-family:"Yeongdo-Rg";
 
 }
+
+.container{
+
+width: 1258px;
+height: 1020px;: 
+}
 </style>
 </head>
-
 <body>
-	<nav>
-		<div>
-			<ul>
-				<li><a class="title" href="main.jsp">요키콕</a></li>
-				<li><a>회원</a></li>
-				<li><a href="../login/login.jsp">로그인/로그아웃</a></li>
-				<li><a href="../board/feedAdd.jsp">게시물 작성</a></li>
-				<li><a href="../mypage/mypage.jsp">내 정보</a></li>
-				<li><a>소식 확인</a></li>
-				<!-- <li><a>위치 갱신</a></li> -->
-			</ul>
-		</div>
-	</nav>
+<div class="container">
+<ul>
+<li class="title">요기콕</li>
+<li><a href="../board/board_add.jsp">글쓰기(아이콘)</a></li>
+<li><a href="../mypage/mypage.jsp">나의정보(아이콘)</a></li>
 
+<!-- 쿠키 존재할 경우 로그아웃으로 표시 및 연결 -->
+<li><a href="../login/login.jsp">로그인(아이콘)</a></li>
+<li><a href="../login/logout.jsp">로그아웃(아이콘)</a></li>
+<li>알람</li>
+</ul>
+</div>
 </body>
 </html>

@@ -1,7 +1,7 @@
 package jdbc;
 
 public class BoardDTO {
-	private String id;
+	private String bid;
 	private String content;
 	private String ts;
 	private String images;
@@ -9,11 +9,12 @@ public class BoardDTO {
 	private String latitude;
 	private String longitude;
 	private String uid;
-	public String getId() {
-		return id;
+	
+	public String getBId() {
+		return bid;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setId(String bid) {
+		this.bid = bid;
 	}
 	public String getContent() {
 		return content;
@@ -60,9 +61,9 @@ public class BoardDTO {
 	
 	public BoardDTO() {
 	}
-	public BoardDTO(String id, String content, String ts, String images, String videos, String latitude,
+	public BoardDTO(String bid, String content, String ts, String images, String videos, String latitude,
 			String longitude, String uid) {
-		this.id = id;
+		this.bid = bid;
 		this.content = content;
 		this.ts = ts;
 		this.images = images;

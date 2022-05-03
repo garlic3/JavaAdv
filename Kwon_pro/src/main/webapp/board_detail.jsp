@@ -30,13 +30,15 @@
 <body>
 
 	<%
-	/* String id = request.getParameter("id"); */
-	String id = "23";
-	FeedDAO dao = new FeedDAO();
-	FeedDTO board = dao.getBoardDetail(id);
-	
-	String uid = board.getUid();
-	String bid = board.getId();
+	p
+
+			/* String id = request.getParameter("id"); */
+			String id = "23";
+			BoardDAO dao = new BoardDAO();
+			BoardDTO board = dao.getBoardDetail(bid);
+			
+			String uid = board.getUid();
+			String bid = board.getId();
 	%>
 
 	<div class="container">

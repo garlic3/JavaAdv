@@ -109,19 +109,6 @@
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
 
-<script>
-$(document).ready(function(){
-	$('#submit').click(function(){   //submit 버튼을 클릭하였을 때
-		let senddata = "<%=mem.getMid()%>"; 
-		
-		$.ajax({
-			type:'post',   //post 방식으로 전송
-			url:'test1.jsp',   //데이터를 주고받을 파일 주소
-			data:{"username":senddata, "name":name},   //위의 변수에 담긴 데이터를 전송해준다.
-			success : alert("성공!")/* function(data){   //파일 주고받기가 성공했을 경우. data 변수 안에 값을 담아온다.
-		});
-	});
-});
-</script>
+
 </body>
 </html>

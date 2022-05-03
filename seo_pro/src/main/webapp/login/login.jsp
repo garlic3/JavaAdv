@@ -3,12 +3,40 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
 
+body {
+
+display:flex;
+justify-content: center;
+
+
+
+}
+
+.container {
+
+width: 1008px;
+display:flex;
+justify-content: center;
+
+}
+
+.login_photo {
+border: 1px solid black;
+width:
+
+}
+
+
+</style>
 <meta charset="UTF-8">
 <title>로그인</title>
 </head>
 <body>
 <div class="container">
+<div class="login_photo"></div>
+<div class="login_form">
 	<form action="login_db2.jsp" method="get">
 
 		<div>
@@ -29,12 +57,14 @@
 			</div>
 			
 	</form>
+	
+	
 	<a id="custom-login-btn" href="javascript:kakaoLogin()">
       <img
         src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
-        width="222"
-      />
+        width="222"/>
     </a>
+    </div>
 </div>
 
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>

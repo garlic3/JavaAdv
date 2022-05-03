@@ -22,7 +22,7 @@
   	 response.sendRedirect("/login/login.jsp");
    }else{
    // 저장에 문제가 있으면 로그인 페이지로 이동
-  	 response.sendRedirect("/user/useradd.jsp");
+  	 response.sendRedirect("/us.jsp");
    }
   %>
  

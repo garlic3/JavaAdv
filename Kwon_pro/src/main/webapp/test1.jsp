@@ -1,8 +1,8 @@
 
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ page import="jdbc.*" %>
+	pageEncoding="UTF-8"%>
+<%@ page import="jdbc.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,22 +12,22 @@
 <body>
 
 
- <%String uid = request.getParameter("username"); 
- String ucon = request.getParameter("name");
- String ufname = null;
- String uvname = null;
- String lat = null;
- String lon = null;
- 
- 
- %>
+	<%
+	String uid = request.getParameter("username");
+	String ucon = request.getParameter("name");
+	String ufname = null;
+	String uvname = null;
+	String lat = null;
+	String lon = null;
+	%>
 
-<%  FeedDAO dao = new FeedDAO();
-	       if (dao.insert(uid, ucon, ufname, uvname, lat, lon)) {
-	       	response.sendRedirect("test.jsp");
-	       }else{
-	    	   response.sendRedirect("test.jsp");   
-	       }
-	   %>
+	<%
+	FeedDAO dao = new FeedDAO();
+	if (dao.insert(uid, ucon, ufname, uvname, lat, lon)) {
+		response.sendRedirect("test1.jsp");
+	} else {
+		response.sendRedirect("test1.jsp");
+	}
+	%>
 </body>
 </html>
